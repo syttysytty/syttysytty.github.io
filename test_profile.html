@@ -125,6 +125,12 @@
   background: rgba(225, 6, 27, 0.9);
 }
 
+/* Mobile Hochformat: Tabelle höher anzeigen */
+@media (max-width: 576px) and (orientation: portrait) {
+  #table-container .ratio {
+    aspect-ratio: 9 / 16; /* statt 16:9 -> mehr Höhe */
+  }
+}
 
    
   </style>
