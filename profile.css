@@ -1,0 +1,289 @@
+
+/* ==============================
+   PLAYER CARDS
+============================== */
+.player-card {
+  width: 294px;
+  height: 500px;
+  display: block;          /* NIE verstecken */
+}
+
+.player-card {
+  width: 294px;
+  height: 500px;
+  perspective: 1200px;
+  margin: auto;
+}
+
+.player-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.player-card.is-flipped .player-card-inner {
+  transform: rotateY(180deg);
+}
+
+
+.player-card:hover .player-card-inner {
+  transform: rotateY(180deg);
+}
+
+.player-card-front,
+.player-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.player-card-front img,
+.player-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.player-card-back {
+  transform: rotateY(180deg);
+}
+
+
+.card-new {
+  width: 100%;
+  max-width: 300px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px 5px rgba(218, 37, 28, 0.1);
+  background: #151515;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+}
+
+.card-new .ds-top {
+  width: 100%;
+  height: 40px;
+  background: #DA251C;
+  animation: dsTop 1.5s;
+}
+
+.card-new .avatar-holder {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #151515,
+              inset 0 0 0 5px #000000;
+  background: white;
+  overflow: hidden;
+  animation: mvTop 1.5s;
+}
+
+.card-new .avatar-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-new .name {
+  margin-top: 150px;
+  text-align: center;
+  animation: fadeIn 2s ease-in;
+}
+
+.card-new .name a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.card-new .name a:hover {
+  text-decoration: underline;
+  color: crimson;
+}
+
+.card-new .button {
+  text-align: center;
+  margin-top: 10px;
+  animation: fadeIn 2s ease-in;
+}
+
+.card-new .button a {
+  padding: 5px 20px;
+  border-radius: 10px;
+  color: white;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  font-size: 12px;
+  transition: all 0.3s;
+  background: transparent;
+  border: 1px solid #DA251C;
+}
+
+.card-new .button a:hover {
+  background: #DA251C;
+  color: white;
+}
+
+.card-new .ds-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  color: white;
+}
+
+.card-new .ds-info .ds {
+  text-align: center;
+  animation: fadeInMove 2s forwards;
+}
+
+.card-new .ds-info .ds h6 {
+  text-transform: uppercase;
+  color: #DA251C;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.card-new .ds-info .ds p {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.card-new .nickname {
+  text-align: center;
+  font-style: italic;
+  color: #ccc;
+  font-size: 14px;
+  margin-top: 5px;
+  animation: fadeIn 2s ease-in;
+}
+
+
+card-new .badge-under-avatar {
+
+}
+
+.card-new .badge-under-avatar img {
+    width: 20%;
+    height: 20%;
+    object-fit: contain;
+    position: absolute;
+    top: 150px; /* direkt unter dem Avatar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    z-index: 5;
+
+}
+
+
+@keyframes fadeInMove {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes mvTop {
+  0% {top: -150px;}
+  100% {top: 40px;}
+}
+
+@keyframes dsTop {
+  0% {top: -150px;}
+  100% {top: 0;}
+}
+
+/* Header image styles */
+.header-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 30px;
+}
+
+/* Background styles */
+.bg-profile {
+  background: #1F1A17;
+}
+
+/* Button styles */
+
+/* Button styles */
+.filter-btn.btn-primary {
+  background-color: #DA251c; /* Duplicate color */
+  border-color: #DA251c; /* Duplicate color */
+  color: white;
+}
+
+.filter-btn.btn-primary:hover {
+  background-color: #b01e16;
+  border-color: #b01e16;
+}
+
+.filter-btn.btn-outline-primary {
+  border-color: #DA251c; /* Duplicate color */
+  color: #DA251c; /* Duplicate color */
+}
+
+.filter-btn.btn-outline-primary:hover {
+  background-color: #DA251c; /* Duplicate color */
+  border-color: #DA251c; /* Duplicate color */
+  color: white;
+}
+
+
+/* Button styles */
+.filter-btn.btn-primary,
+ #show-table-btn.btn-primary {
+    background-color: #DA251c;
+    border-color: #DA251c;
+    color: white;
+}
+
+
+.filter-btn.btn-primary:hover,
+#show-table-btn.btn-primary:hover {
+    background-color: #DA251c;
+    border-color: #DA251c;
+}
+
+/* Standard-Outline-Stil */
+#show-table-btn.btn-outline-primary {
+    border-color: #DA251c;
+    color: #DA251c;
+    background-color: transparent;
+}
+
+/* Aktiv (wenn gedrückt oder ausgewählt) */
+#show-table-btn.btn-outline-primary.active,
+#show-table-btn.btn-outline-primary:active {
+    background-color: #DA251c;
+    border-color: #DA251c;
+    color: white;
+}
+
+
+
+.navbar-brand img {
+  max-height: 34px;
+  height: auto;
+}

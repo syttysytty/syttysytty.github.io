@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EIGHT LEGS WITTEN</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    :root {
+      --bg-dark: #161412;
+      --bg-card: #1f1b18;
+      --red: #e1061b;
+      --red-glow: rgba(225,6,27,.6);
+      --text-light: #f5f5f5;
+      --text-muted: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #2a1b1b, var(--bg-dark) 60%);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      backdrop-filter: blur(12px);
+      background: rgba(10, 10, 10, 0.85);
+    }
+
+    /* HERO + PARALLAX */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('Logo-Eight-Legs_1920-removebg-preview.png') no-repeat center/contain;
+      opacity: 0.8;
+      transform: translateZ(-1px) scale(0.8);
+    }
+
+
+
+    .hero img {
+      max-width: 420px;
+      filter: drop-shadow(0 0 30px var(--red-glow));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    section { padding: 6rem 0; }
+
+    .card-modern {
+      background: linear-gradient(160deg, #231e1a, var(--bg-card));
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0,0,0,.65);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+
+    .card-modern:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 40px var(--red-glow);
+    }
+
+    .section-title {
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    /* INSTAGRAM GRID */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .insta-grid iframe {
+      width: 50%;
+      border-radius: 14px;
+      box-shadow: 0 0 20px rgba(0,0,0,.6);
+    }
+
+    .insta-wrapper {
+      flex: 1;
+      position: relative;
+      min-height: 350px;
+    }
+
+  .insta-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0 0 16px 16px;
+  }
+
+     /* ===== FIXED PARALLAX BACKGROUND ===== */
+    .parallax-wrapper {
+      position: relative;
+      height: 200vh; /* scroll space */
+    }
+
+
+     /* ===== NEON TEXT ===== */
+    .welcome-text {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 800;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(60px);
+      color: var(--red);
+      text-shadow:
+        0 0 6px var(--red),
+        0 0 18px var(--red),
+        0 0 45px var(--glow);
+      transition:
+        opacity .8s ease-out,
+        transform .8s ease-out;
+    }
+
+    .welcome-text.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(80px);
+      transition: opacity .6s ease-out;
+      position: relative;
+      will-change: transform;
+
+      margin-top: 2rem;
+      text-shadow: 0 0 25px var(--red-glow);
+    }
+
+    @media (min-width: 768px) {
+      #social-contact .row {
+        min-height: 65vh;
+        align-items: stretch;
+      }
+    }
+
+
+
+    footer {
+      background: #0f0c0a;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .footer-contact {
+      background: #0f0c0a;
+      color: var(--text-light);
+    }
+
+    .footer-contact .contact-item i {
+      font-size: 1.3rem;
+      color: var(--red);
+    }
+
+    .footer-contact .contact-item p {
+      color: var(--text-muted);
+    }
+
+    .footer-contact .social-icon {
+      color: var(--text-light);
+      font-size: 1.4rem;
+      transition: color .3s ease, transform .3s ease;
+    }
+
+    .footer-contact .social-icon:hover {
+      color: var(--red);
+      transform: scale(1.15);
+    }
+
+    .footer-contact .copyright {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">EIGHT LEGS</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#nav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#about">Verein</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#news">Aktuelles</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#social-contact">Instagram</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#contact">Kontakt</a>
+        </li>
+
+        <li class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    href="#"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Teams
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li>
+      <a class="dropdown-item" href="">Team 1</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="">Team 2</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="test_profile.html">Team 3</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="">Eight Legs 1</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="">Kuckuk</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="">Eight Legs 2</a>
+    </li>
+  </ul>
+</li>
+
+        <!--  Sonstiges Dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Sonstiges
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <a class="dropdown-item" href="ueberEightLegs.html">Über die Eight Legs</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="Entwicklung.html">Entwicklung</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="NameUndLogo.html">Name & Logo</a>
+
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="container">
+    <h1 class="mt-4 fw-bold hero-title"></h1>
+  </div>
+</section>
+
+
+
+<section id="news">
+  <div class="container">
+    <h2 class="section-title">Aktuelles</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card-modern p-4 reveal">
+          <i class="fas fa-bullseye text-danger"></i>
+                <strong>Neuer Spieltag!</strong><br>
+                <small>11.04.2026</small>
+				<p>
+                <p>Team 2 gewinnt  mit 12:8 💪</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-modern p-4 reveal">
+          <i class="fas fa-exclamation-triangle text-danger"></i>
+                <strong>Training fällt aus</strong><br>
+                <small>22.04.2026</small>
+				<p>
+                <p>Stadtliga Team 2 Heimpspiel gg Darty Harry Training beschränkt möglich! </p>
+				
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-modern p-4 reveal">
+          <strong>📅 Spiel verlegt</strong><br>
+          <small>24.04.2026</small>
+          <p>Aufgrund des Feiertags am 1.5 wurde das Heimpiel der 3. Mannschft verschoben</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="social-contact">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+
+      <!-- Instagram -->
+
+      <div class="col-md-6">
+        <div class="card-modern h-100 d-flex flex-column p-0">
+          <div class="insta-wrapper flex-grow-1">
+            <iframe
+              src="https://www.instagram.com/p/CiAeU9tKFFp/embed">
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- Contact -->
+      <div class="col-md-6">
+  <div class="card-modern p-5 h-100 d-flex flex-column">
+
+    <div class="contact-form text-start">
+
+      <h3 class="section-title"><b>Location</b></h3>
+      <p class="mb-4 text-light">
+        Unsere heiligen Hallen befinden sich am Clubhaus Matchball an der
+        Jahnstraße 11 in 58455 Witten im 1. OG<br>
+        Parkmöglichkeiten befinden sich direkt am Sportplatz
+      </p>
+
+      <img
+        src="location_eight_legs_witten.png"
+        class="shadow-red-light border border-dark border-3 mb-4 w-100"
+        alt="Location"
+        style="object-fit: cover;"
+      >
+
+
+
+    </div>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="card-modern p-5 reveal">
+      <h2 class="section-title">EIGHT LEGS</h2>
+      <p class="text-light text-center fs-5">
+                Wir sind immer auf der Suche nach neuen Mitspielern, damit wir als Abteilung wachsen und den Grundstein für sportliche Erfolge legen können. <br><br>
+                Über Neulinge, die bisher noch keine Darterfahrungen haben, freuen wir uns genauso wie über erfahrene Spieler. Als Ziel haben wir uns gesetzt, unsere Mannschaften, die im Nordrhein-Westfälischen Dartverband (NWDV) gemeldet sind, Schritt für Schritt zu verbessern.
+                Dies funktioniert in erster Linie über eine Vergrößerung des Kaders, daher laden wir jeden Interessierten ein, uns einfach mal an einem unserer Trainingsabende dienstags oder freitags ab 18 Uhr zu besuchen. <br><br>
+
+                Dart ist Sport für jedes Alter und wir haben aktuell auch junge wie auch ältere Spieler im Kader. <br><br>
+
+                Auch Jugendliche unter 18 Jahren, denen wir diesen Sport zu gern näher bringen würden,
+                sind bei uns herzlich willkommen. <br><br>
+
+                Neben Geschicklichkeit und Konzentration wird in unserem Sport auch das Kopfrechnen enorm verbessert,
+                was sich nur positiv auf schulische Leistung auswirken kann.
+              </p>
+
+              <dl class="text-light text-center fs-5">
+                <dt><strong>Unseren Spielern bieten wir:</strong></dt><br>
+                <dd>- regelmäßige Trainingszeiten</dd>
+                <dd>- auf den Spieler angepasste Trainingseinheiten</dd><br>
+                <dt>Gemeinsame Fahrten zu verschiedenen Turnieren:</dt>
+                <dd>- NWDV-Liga</dd>
+                <dd>- Dortmunder Stadtliga</dd>
+                <dd>- andere Turnierserien</dd><br>
+                <dt>Angenehme Teamatmosphäre und jede Menge Spaß!</dt>
+              </dl>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer-contact" id="contact">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-10">
+
+        <h3 class="section-title mb-4"><b>Kontakt</b></h3>
+        <p class="mb-5 text-light">
+          Wenn du Lust hast, einfach mal beim Training vorbeizuschauen oder dir
+          ein Bild von unserer Location zu machen, dann findest du uns hier:
+        </p>
+
+        <div class="row gy-4">
+
+          <!-- Adresse -->
+          <div class="col-md-4">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt mb-2"></i>
+              <p class="mb-0">Jahnstraße 11<br>58455 Witten</p>
+            </div>
+          </div>
+
+          <!-- Telefon -->
+          <div class="col-md-4">
+            <div class="contact-item">
+              <i class="fas fa-phone mb-2"></i>
+              <p class="mb-0">123456789</p>
+            </div>
+          </div>
+
+          <!-- Mail -->
+          <div class="col-md-4">
+            <div class="contact-item">
+              <i class="fas fa-envelope mb-2"></i>
+              <p class="mb-0">davidduffe@web.de</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Social -->
+        <div class="social-links mt-5">
+          <h6 class="mb-3">Folge uns auf</h6>
+          <a href="#" class="social-icon mx-2"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/eightlegs_witten?igsh=eiZsYnd5OGxtbWZi" class="social-icon mx-2">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+
+        <div class="copyright mt-5">
+          © 2026 Eight Legs Witten
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  ScrollReveal().reveal('.reveal', {
+    distance: '60px',
+    duration: 900,
+    easing: 'ease-out',
+    origin: 'bottom',
+    interval: 150
+  });
+
+
+  const heroTitle = document.querySelector('.hero-title');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    if (scrollY < window.innerHeight) {
+      heroTitle.style.transform = `translateY(${80 - scrollY * 0.3}px)`;
+      heroTitle.style.opacity = Math.min(1, scrollY / 200);
+    }
+  });
+
+</script>
+
+</body>
+</html>
