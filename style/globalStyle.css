@@ -14,3 +14,11 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.05);
 }
+/*  Dropdown Toggle (Teams / Sonstiges) – Rahmen entfernen */
+.navbar .dropdown-toggle:focus,
+.navbar .dropdown-toggle:active,
+.navbar .dropdown-toggle.show {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
